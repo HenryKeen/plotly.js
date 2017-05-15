@@ -100,6 +100,36 @@ describe('Test plot api', function() {
             })
             .then(done);
         });
+
+        it('accepts images in layout as args', function(done) {
+
+            Plotly.plot(gd,
+                [{x: [1, 2, 3], y: [1, 2, 3]}],
+                {
+                    width: 500,
+                    height: 500,
+                    images: [{
+                        x: 1,
+                        y: 0,
+                        sizex: 0.2,
+                        sizey: 0.2,
+                        source: '/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+                        xanchor: 'right',
+                        yanchor: 'bottom',
+                        xref: 'paper',
+                        yref: 'paper',
+                        sizing: 'contain',
+                        layer: 'above',
+                        opacity: 0.3
+                    }]
+                },
+                { 
+            }).then(function() {
+                expect(gd.layout.width).toEqual(500);
+                expect(gd.layout.height).toEqual(500);
+                expect(gd.data.length).toEqual(1);
+            }).catch(fail).then(done);
+        });
     });
 
     describe('Plotly.relayout', function() {
