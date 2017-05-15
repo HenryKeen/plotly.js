@@ -98,6 +98,7 @@ var pathToShortcutPath = path.join(__dirname, '..', '..', 'tasks', 'util', 'shor
 var pathToMain = path.join(__dirname, '..', '..', 'lib', 'index.js');
 var pathToJQuery = path.join(__dirname, 'assets', 'jquery-1.8.3.min.js');
 var pathToIE9mock = path.join(__dirname, 'assets', 'ie9_mock.js');
+var pathToPlotlyImage = path.join(__dirname, 'assets', 'plotly.png');
 
 
 function func(config) {
@@ -247,7 +248,8 @@ if(isFullSuite) {
 
     func.defaultConfig.files.push(
         pathToJQuery,
-        pathToMain
+        pathToMain,
+        pathToPlotlyImage
     );
 
     func.defaultConfig.preprocessors[pathToMain] = ['browserify'];

@@ -99,11 +99,11 @@ module.exports = function draw(gd) {
                 var dataURL = canvas.toDataURL('image/png');
 
                 thisImage.attr('xlink:href', dataURL);
+                resolve();
             };
 
 
             thisImage.on('error', errorHandler);
-            thisImage.on('load', resolve);
 
             img.src = d.source;
 
