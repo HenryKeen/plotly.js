@@ -100,35 +100,6 @@ describe('Test plot api', function() {
             })
             .then(done);
         });
-
-        it('accepts images in layout which it renders', function(done) {
-
-            Plotly.plot(gd,
-                [{x: [1, 2, 3], y: [1, 2, 3]}],
-                {
-                    width: 500,
-                    height: 500,
-                    images: [{
-                        x: 1,
-                        y: 0,
-                        sizex: 0.2,
-                        sizey: 0.2,
-                        source: 'base/assets/plotly.png',
-                        xanchor: 'right',
-                        yanchor: 'bottom',
-                        xref: 'paper',
-                        yref: 'paper',
-                        sizing: 'contain',
-                        layer: 'above',
-                        opacity: 0.3
-                    }]
-                },
-                {}
-            ).then(function() {
-                var image = document.querySelector('g.layer-above g.imagelayer image');
-                expect(image).not.toBe(null);
-            }).catch(fail).then(done);
-        });
     });
 
     describe('Plotly.relayout', function() {
